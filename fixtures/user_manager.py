@@ -21,6 +21,7 @@ class UserManager:
         self.api_client.create_user(user)
 
     def teardown(self):
+        # Delete user if the user was created before.
         if self.user is not None:
             self.api_client.delete_user()
 
