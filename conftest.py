@@ -2,7 +2,10 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 
 from fixtures.user_manager import user_manager
 
@@ -32,6 +35,8 @@ def config(request: pytest.FixtureRequest):
 
     if browser.lower() == "chrome":
         options = ChromeOptions()
+    elif browser.lower() == "firefox":
+        options = FirefoxOptions()
     else:
         raise ValueError(f"Browser {browser} is not supported!")
 
@@ -56,7 +61,7 @@ def config(request: pytest.FixtureRequest):
     }
 
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def driver(config):
     driver = None
     browser = config.get("browser")
@@ -74,6 +79,17 @@ def driver(config):
             driver = webdriver.Chrome(
                 options=options, service=ChromeService(
                     ChromeDriverManager().install())
+            )
+    elif browser == "firefox":
+        if use_local_driver:
+            driver = webdriver.Firefox(
+                options=options, service=FirefoxService(
+                    executable_path=exec_path)
+            )
+        else:
+            driver = webdriver.Firefox(
+                options=options, service=FirefoxService(
+                    GeckoDriverManager().install())
             )
 
     yield driver

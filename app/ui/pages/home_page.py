@@ -1,5 +1,5 @@
 from app.ui.locators import HomePageLocators
-from app.ui.pages import BasePage, Header, Footer
+from app.ui.pages import Header, BasePage
 
 
 class HomePage(Header, BasePage):

@@ -1,12 +1,10 @@
 import allure
-import pytest
 from tests.tests_ui.base_case import BaseCase
 
 
 @allure.suite("Smoke")
 @allure.epic("Product Cards")
 class TestProducts(BaseCase):
-    @pytest.mark.wip
     @allure.title("AE-7: Verify All Products and product detail page")
     @allure.link("https://app.qase.io/case/AE-7")
     def test_ae_7_verify_products_and_details_page(self):
@@ -19,7 +17,6 @@ class TestProducts(BaseCase):
         # Assert
         assert self.product_page.is_opened()
 
-    @pytest.mark.wip
     @allure.title("AE-8: Search Product")
     @allure.link("https://app.qase.io/case/AE-8")
     def test_ae_8_search_product(self):
