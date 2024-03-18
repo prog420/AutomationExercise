@@ -1,5 +1,7 @@
 <h2 align="center">Test Automation Project for <a href="https://www.automationexercise.com/">AutomationExercise.com</a></h2>
-___
+
+---
+
 <p align="center">
 <a><img src="https://img.shields.io/website-up-down-green-red/http/https://prog420.github.io/AutomationExercise.svg"></a>
 <a><img src="https://img.shields.io/badge/python-3.8%20|%203.9%20|%203.10%20|%203.11-blue"></a>
@@ -7,6 +9,7 @@ ___
 </p>
 
 ---
+
 #### 1. Local Machine:
 
 ##### Start new test run:
